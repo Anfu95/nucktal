@@ -5,6 +5,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Livewire\ShoppingCart;
+
 
 
 /*
@@ -26,12 +28,8 @@ Route::get('categories/{category}', [CategoryController::class, 'show'])->name("
 
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
+
+Route::get('orders/create', function() {
+
+})->name('orders.create');
