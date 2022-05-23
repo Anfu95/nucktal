@@ -94,7 +94,7 @@
           <ul class="bg-white">
             @foreach ($categories as $category)
               <li class="navigation-link text-trueGray-500 hover:bg-orange-500 hover:text-white">
-                <a class="py-2 px-4 text-sm flex items-center" href="">
+                <a class="py-2 px-4 text-sm flex items-center" href="{{route('categories.show', $category)}}">
                   <span class="flex justify-center w-9">
                     {!!$category->icon!!}
                   </span>
@@ -112,7 +112,7 @@
         </div>
       </div>
 
-      {{--Menu computadora--}}
+      {{--Menu mobil--}}
       <div class="bg-white h-full overflow-y-auto">
         <div class="container bg-gray-200 py-3 mb-2">
           @livewire('search')
@@ -120,7 +120,7 @@
         <ul>
           @foreach ($categories as $category)
             <li class="text-trueGray-500 hover:bg-orange-500 hover:text-white">
-              <a class="py-2 px-4 text-sm flex items-center" href="">
+              <a class="py-2 px-4 text-sm flex items-center" href="{{route('categories.show', $category)}}">
                 <span class="flex justify-center w-9">
                   {!!$category->icon!!}
                 </span>
