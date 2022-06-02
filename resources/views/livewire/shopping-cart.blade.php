@@ -58,7 +58,7 @@
                             </td>
 
                             <td class="text-center">
-                                <span>USD {{ $item->price }}</span>
+                                <span>MX {{ $item->price }}</span>
                                 <a class="ml-6 cursor-pointer hover:text-red-600"
                                     wire:click="delete('{{$item->rowId}}')"
                                     wire:loading.class="text-red-600 opacity-25"
@@ -86,7 +86,7 @@
                             </td>
 
                             <td class="text-center">
-                                USD {{$item->price * $item->qty}}
+                                MX {{$item->price * $item->qty}}
                             </td>
                         </tr> --}}
 
@@ -124,7 +124,7 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                          
                                 <div class="text-sm text-gray-500">
-                                    <span>USD {{ $item->price }}</span>
+                                    <span>MX {{ $item->price }}</span>
                                     <a class="ml-6 cursor-pointer hover:text-red-600"
                                         wire:click="delete('{{$item->rowId}}')"
                                         wire:loading.class="text-red-600 opacity-25"
@@ -152,7 +152,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 <div class="text-sm text-gray-500">
-                                    USD {{$item->price * $item->qty}}
+                                    MX {{$item->price * $item->qty}}
                                 </div>
                             </td>
                         </tr>
@@ -194,7 +194,7 @@
                 <div>
                     <p class="text-gray-700">
                         <span class="font-bold text-lg">Total:</span>
-                        USD {{ Cart::subTotal() }}
+                        MX {{ Cart::subTotal() }}
                     </p>
                 </div>
 
