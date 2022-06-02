@@ -27,7 +27,7 @@
                                     <p>{{$item->options['size']}}</p>
                                 @endisset
                             </div>
-                            <p>USD {{$item->price}}</p>
+                            <p>MX {{$item->price}}</p>
                         </article>
                     </li>
                 @empty
@@ -40,7 +40,7 @@
             </ul>
             @if (Cart::count())
                 <div class="py-2 px-3">
-                    <p class="text-lg text-gray-700 mt-2 mb-3"><span class="font-bold">Total:</span> USD {{ Cart::subtotal() }}</p>
+                    <p class="text-lg text-gray-700 mt-2 mb-3"><span class="font-bold">Total:</span> MX {{ Cart::subtotal() }}</p>
                     <x-button-enlace href="{{ route('shopping-cart') }}" color="orange" class="w-full">
                         Ir al carrito de compras
                     </x-button-enlace>
