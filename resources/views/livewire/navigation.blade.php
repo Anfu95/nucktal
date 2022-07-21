@@ -39,6 +39,14 @@
                             {{ __('Profile') }}
                         </x-jet-dropdown-link>
 
+                        <x-jet-dropdown-link href="{{ route('orders.index') }}">
+                          Mis ordenes
+                        </x-jet-dropdown-link>
+
+                        <x-jet-dropdown-link href="{{ route('admin.index') }}">
+                          Adminstrador
+                      </x-jet-dropdown-link>
+
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                 {{ __('API Tokens') }}
