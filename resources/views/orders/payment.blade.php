@@ -1,5 +1,5 @@
 <x-app-layout>
-    @php
+    {{-- @php
         // SDK de Mercado Pago
         require base_path('vendor/autoload.php');
         // Agrega credenciales
@@ -36,7 +36,7 @@
         
         $preference->items = $products;
         $preference->save();
-    @endphp
+    @endphp --}}
     <div class="container py-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-6 container py-8">
             <div class="order-2 lg:order-1 xl:col-span-3">
@@ -147,11 +147,12 @@
                         </div>
                     </div>
                 </div>
+                <div id="paypal-button-container"></div>
             </div>
         </div>
     </div>
     {{-- SDK MercadoPago.js V2 --}}
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    {{-- <script src="https://sdk.mercadopago.com/js/v2"></script>
     
     <script>
         // Agrega credenciales de SDK
@@ -169,6 +170,34 @@
                 label: "Pagar", // Cambia el texto del botón de pago (opcional)
             },
         });
-    </script>
-  
+    </script> --}}
+    <script src="https://www.paypal.com/sdk/js?client-id={{config('services.paypal.client_id')}}&currency=USD"></script>
+
+    <script>
+        paypal.Buttons({
+          // Sets up the transaction when a payment button is clicked
+          createOrder: (data, actions) => {
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: '{{$order->total}}' // Can also reference a variable or function
+                }
+              }]
+            });
+          },
+          // Finalize the transaction after payer approval
+          onApprove: (data, actions) => {
+            return actions.order.capture().then(function(orderData) {
+              // Successful capture! For dev/demo purposes:
+              console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+              const transaction = orderData.purchase_units[0].payments.captures[0];
+              alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+              // When ready to go live, remove the alert and show a success message within this page. For example:
+              // const element = document.getElementById('paypal-button-container');
+              // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+              // Or go to another URL:  actions.redirect('thank_you.html');
+            });
+          }
+        }).render('#paypal-button-container');
+      </script>
 </x-app-layout>
