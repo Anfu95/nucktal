@@ -19,7 +19,7 @@
         <h1 class="text-3xl text-center font-semibold mb-8">Complete esta información para crear un producto</h1>
 
         <div class="mb-4" wire:ignore>
-            <form action="" method="POST" class="dropzone"
+            <form action="{{ route('admin.products.files', $product) }}" method="POST" class="dropzone"
                 id="my-awesome-dropzone"></form>
         </div>
 
@@ -48,7 +48,7 @@
         @endif
 
 
-        {{-- @livewire('admin.status-product', ['product' => $product], key('status-product-' . $product->id)) --}}
+        @livewire('admin.status-product', ['product' => $product], key('status-product-' . $product->id))
 
         {{-- <div class="bg-white shadow-xl rounded-lg p-6">
 
